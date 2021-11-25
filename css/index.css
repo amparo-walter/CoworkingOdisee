@@ -28,6 +28,7 @@ body{
 }
 .container p{
     font-size: 3rem;
+    text-shadow: 1px 1px 5px #aaa;
 }
 .button_div{
     margin: 30px auto 0;
@@ -72,7 +73,7 @@ body{
     top: 50%;
     left: 50%;
     background: rgb(76,206,224);
-    background: linear-gradient(90deg, rgba(76,206,224,1) 9%, rgba(205,128,215,1) 100%);
+    background: linear-gradient(90deg, rgba(76,206,224,1) 9%, rgba(233,235,194,1) 50%, rgba(205,128,215,1) 100%);
     opacity: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
     transition: 0.3s;
