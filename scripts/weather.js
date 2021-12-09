@@ -2,6 +2,11 @@
 const _DAYTODAY = 0;
 const _LIST6DAY = 1;
 
+
+/*
+* get weather data 7 days in the future, excluding today.
+* lat = latitude, long = longtitude, lang = language (nl)
+*/
 function getWeatherDataFuture(lat, long, lang){
     fetch("https://community-open-weather-map.p.rapidapi.com/forecast/daily?lat=" + lat + "&lon="+ long + "&cnt=7&units=metric&lang=" + lang, {
         "method": "GET",
@@ -20,6 +25,10 @@ function getWeatherDataFuture(lat, long, lang){
     });
 }
 
+/*
+* Get weather data of today.
+* lat = latitude, long = longtitude, lang = language (nl)
+*/
 function getWeatherDataNow(lat, long, lang){
     fetch("https://community-open-weather-map.p.rapidapi.com/weather?lat=" + lat + "&lon="+long+"&lang="+lang+"&units=metric", {
         "method": "GET",
@@ -38,8 +47,13 @@ function getWeatherDataNow(lat, long, lang){
     });
 }
 
+/*
+* Processes the data by either looping and generating a div or generating 1 div (for today)
+*/
 function processData(data, type){
     console.log(data);
+
+    //post de city name inside the title
     var city = type == _LIST6DAY ? data.city.name : data.name;
 
     var i = 0;
@@ -53,6 +67,9 @@ function processData(data, type){
         generateDayDiv(element, null, type);
     }
 }
+/*
+* Generates the div with all info
+*/
 function generateDayDiv(day, i, type){
     var now = Date.now();
     var date;
@@ -104,6 +121,10 @@ function generateDayDiv(day, i, type){
     }
 }
 
+/*
+* if the window is loaded, do the api requests.
+* because this is assynchronous, we still need a default dataheader.
+*/
 window.addEventListener('load', (event) => {
     getWeatherDataNow(35,139, "nl");
     getWeatherDataFuture(35, 139, "nl");
