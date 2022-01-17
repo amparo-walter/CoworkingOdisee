@@ -1,99 +1,132 @@
-var carousel = document.querySelector('.carousel');
 
-for (let i=0;i<7;i++){
-    carousel.innerHTML += `
-    <div class="carousel__cell" num="${i}">
-        <p>${i+1}</p>
-    </div>` 
-}
+const _DAYTODAY = 0;
+const _LIST6DAY = 1;
 
-var cells = carousel.querySelectorAll('.carousel__cell');
-var cellCount; // cellCount set from cells-range input value
-var selectedIndex = 0;
-var cellWidth = carousel.offsetWidth;
-var cellHeight = carousel.offsetHeight;
-var isHorizontal = true;
-var rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
-var radius, theta;
-// console.log( cellWidth, cellHeight );
-
-
-function rotateCarousel() {
-  var angle = theta * selectedIndex * -1;
-  carousel.style.transform = 'translateZ(' + -radius + 'px) ' + 
-    rotateFn + '(' + angle + 'deg)';
-}
-
-var prevButton = document.querySelector('.previous-button');
-prevButton.addEventListener( 'click', function() {
-  selectedIndex--;
-  adjustOpacity()
-  rotateCarousel();
-});
-
-var nextButton = document.querySelector('.next-button');
-nextButton.addEventListener( 'click', function() {
-  selectedIndex++;
-  adjustOpacity()
-  rotateCarousel();
-});
 
 /*
-var cellsRange = document.querySelector('.cells-range');
-cellsRange.addEventListener( 'change', changeCarousel );
-cellsRange.addEventListener( 'input', changeCarousel );
+* get weather data 7 days in the future, excluding today.
+* lat = latitude, long = longtitude, lang = language (nl)
 */
-
-
-function adjustOpacity() {
-    cells.forEach(cell => cell.style.opacity = 0)
-    let index = selectedIndex
-
-    while (index < 0) index += +cellCount
-    
-    let prevIndex = (index == 0) ? cellCount - 1: (index - 1) % cellCount;
-
-    cells[index % cellCount].style.opacity = 1
-    cells[(index + 1) % cellCount].style.opacity = 0.75
-    cells[prevIndex].style.opacity = 0.75
+function getWeatherDataFuture(lat, long, lang){
+    fetch("https://community-open-weather-map.p.rapidapi.com/forecast/daily?lat=" + lat + "&lon="+ long + "&cnt=7&units=metric&lang=" + lang, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+            "x-rapidapi-key": "3b7c8d911dmsh74f0fea868e2847p1e052cjsn7766d4f05600"
+        }
+    })
+    .then(response => {
+        if(response.ok){
+            response.text().then(data => processData(JSON.parse(data), _LIST6DAY));
+        }
+    })
+    .catch(err => {
+        console.error(err);
+    });
 }
 
-function changeCarousel() {
-  cellCount = carousel.children.length;
-  theta = 360 / cellCount;
-  var cellSize = isHorizontal ? cellWidth : cellHeight;
-  radius = Math.round( ( cellSize / 2) / Math.tan( Math.PI / cellCount ) );
-  for ( var i=0; i < cells.length; i++ ) {
-    var cell = cells[i];
-    if ( i < cellCount ) {
-      // visible cell
-      cell.style.opacity = 1;
-      var cellAngle = theta * i;
-      cell.style.transform = rotateFn + '(' + cellAngle + 'deg) translateZ(' + radius + 'px)';
-    } else {
-      // hidden cell
-      cell.style.opacity = 0;
-      cell.style.transform = 'none';
+/*
+* Get weather data of today.
+* lat = latitude, long = longtitude, lang = language (nl)
+*/
+function getWeatherDataNow(lat, long, lang){
+    fetch("https://community-open-weather-map.p.rapidapi.com/weather?lat=" + lat + "&lon="+long+"&lang="+lang+"&units=metric", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+            "x-rapidapi-key": "3b7c8d911dmsh74f0fea868e2847p1e052cjsn7766d4f05600"
+        }
+    })
+    .then(response => {
+        if(response.ok){
+            response.text().then(data => processData(JSON.parse(data), _DAYTODAY));
+        }
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
+/*
+* Processes the data by either looping and generating a div or generating 1 div (for today)
+*/
+function processData(data, type){
+    console.log(data);
+
+    //post de city name inside the title
+    var city = type == _LIST6DAY ? data.city.name : data.name;
+
+    var i = 0;
+    if(type == _LIST6DAY){
+        data.list.forEach(element => {
+            console.log(element);
+            i += 1;
+            generateDayDiv(element, i, type);
+        });
+    }else if(type = _DAYTODAY){
+        generateDayDiv(element, null, type);
     }
-  }
-  adjustOpacity()
-  rotateCarousel();
+}
+/*
+* Generates the div with all info
+*/
+function generateDayDiv(day, i, type){
+    var now = Date.now();
+    var date;
+    var maxTemp;
+    var minTemp;
+    var temp;
+    var humidity;
+    var pressure;
+    var feels_like;
+    var wind_speed;
+    var wind_deg;
+    var description;
+    var icon;
+    var id;
+    if(type == _DAYTODAY){
+        date = day.dt;
+        maxTemp = day.main.temp_max;
+        minTemp = day.main.temp_min;
+        temp = day.main.temp;
+        humidity = day.humidity;
+        pressure = day.pressure;
+        feels_like = day.feels_like.day;
+        wind_speed = day.speed;
+        wind_deg = day.deg;
+        description = day.weather[0].description;
+        icon = day.weather[0].icon;
+        id = day.weather[0].id;
+    }else if(type == _LIST6DAY){
+        date = day.dt;
+        maxTemp = day.temp.max;
+        minTemp = day.temp.min;
+        temp = day.temp.day;
+        humidity = day.main.humidity;
+        pressure = day.main.pressure;
+        feels_like = day.main.feels_like;
+        wind_speed = day.wind.speed;
+        wind_deg = day.wind.deg;
+        description = day.weather[0].description;
+        icon = day.weather[0].icon;
+        id = day.weather[0].id;
+    }
+
+    main_div = document.createElement('div');
+    main_div.classList.add(type == _LIST6DAY ? "weekDay " + i : "todayDay");
+    if(type == _DAYTODAY){
+        //add all needed elements
+    }else if(tpye == _LIST6DAY){
+        //add all needed elements for future week days
+    }
 }
 
-var orientationRadios = document.querySelectorAll('input[name="orientation"]');
-( function() {
-  for ( var i=0; i < orientationRadios.length; i++ ) {
-    var radio = orientationRadios[i];
-    radio.addEventListener( 'change', onOrientationChange );
-  }
-})();
-
-function onOrientationChange() {
-  var checkedRadio = document.querySelector('input[name="orientation"]:checked');
-  isHorizontal = true;
-  rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
-  changeCarousel();
-}
-
-// set initials
-onOrientationChange();
+/*
+* if the window is loaded, do the api requests.
+* because this is assynchronous, we still need a default dataheader.
+*/
+window.addEventListener('load', (event) => {
+    getWeatherDataNow(35,139, "nl");
+    getWeatherDataFuture(35, 139, "nl");
+});
+    

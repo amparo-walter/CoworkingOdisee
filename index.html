@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
     var x ;
 function getLocation() {
 if (navigator.geolocation) {
@@ -11,8 +11,28 @@ x.innerHTML = "Geolocation is not supported by this browser.";
 function showPosition(position) {
 x.innerHTML = "Latitude: " + position.coords.latitude +
 "<br>Longitude: " + position.coords.longitude;
-}
+} -->
     
     
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Temporo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/index.css" rel="stylesheet">
+        <script type="text/javascript" src="scripts/weather.js"></script>
+    </head>
+    <body>
+        
+        <div class="container">
 
+            <h1>Welcome to Temporo</h1>
+            <p><i>Your trusted weather app!</i></p>
+            <div class="button_div">
+                <p><button class="main_button" type="button" onclick="window.location.href = './weather';">Continue</button></p>
+            </div>
+        </div>
+
+    </body>
 </html>
