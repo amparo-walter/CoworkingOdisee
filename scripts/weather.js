@@ -1,132 +1,100 @@
+$(window).ready(function(){
 
-const _DAYTODAY = 0;
-const _LIST6DAY = 1;
-
-
-/*
-* get weather data 7 days in the future, excluding today.
-* lat = latitude, long = longtitude, lang = language (nl)
-*/
-function getWeatherDataFuture(lat, long, lang){
-    fetch("https://community-open-weather-map.p.rapidapi.com/forecast/daily?lat=" + lat + "&lon="+ long + "&cnt=7&units=metric&lang=" + lang, {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-            "x-rapidapi-key": "3b7c8d911dmsh74f0fea868e2847p1e052cjsn7766d4f05600"
+    failedToLoad("loading");
+    getWeatherAPI();
+  
+  });
+  
+  //******************add callback if fetch failed and set assets acoordingly*****************
+  function getWeatherAPI() {
+    var key = 'f5e76488de20e5944d66a73317c6ca05';
+    var lat = '37.9847003';
+    var long = '-0.6808233';
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&appid=${key}&lang=nl`)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+              failedToLoad();
+          }
+  
+          // Examine the text in the response
+          response.json().then(function(data) {
+            // console.log(data);
+            processesData(data);
+          });
         }
-    })
-    .then(response => {
-        if(response.ok){
-            response.text().then(data => processData(JSON.parse(data), _LIST6DAY));
-        }
-    })
-    .catch(err => {
-        console.error(err);
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+        failedToLoad();
+      });
+      //
+  }
+  
+  var days_lookup = [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ]
+  
+  function processesData(data) {
+    //today
+    var temperatureElement = document.querySelector('.today .temperature');
+    var iconElement = document.querySelector('.today .icon');
+    var discriptionElement = document.querySelector('.today .discription');
+    var temp = Math.round(data.current.temp - 273.14);
+    var icon = data.current.weather[0].icon;
+    var disc = data.current.weather[0].description;
+  
+    temperatureElement.innerHTML = `${temp}°<span>C</span>`;
+    iconElement.innerHTML = `<img src='assets/photos/weather_icons_big/${icon}.png' alt='Weather icon'>`;
+    discriptionElement.innerHTML = disc;
+  
+    //future days
+    var days = document.getElementsByClassName('day');
+    data.daily.forEach((day, i) => {
+      if(i < days.length){
+        var iconElement = days[i].children[1];
+        var tempElement = days[i].children[2];
+  
+        var icon = day.weather[0].icon;
+        var temp = Math.round(day.temp.max - 273.14);
+  
+        iconElement.innerHTML = `<img src='assets/photos/weather_icons/${icon}.png' alt='Weather icon'>`;
+        tempElement.innerHTML = `${temp}°<span>C</span>`;
+      }
     });
-}
-
-/*
-* Get weather data of today.
-* lat = latitude, long = longtitude, lang = language (nl)
-*/
-function getWeatherDataNow(lat, long, lang){
-    fetch("https://community-open-weather-map.p.rapidapi.com/weather?lat=" + lat + "&lon="+long+"&lang="+lang+"&units=metric", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-            "x-rapidapi-key": "3b7c8d911dmsh74f0fea868e2847p1e052cjsn7766d4f05600"
-        }
-    })
-    .then(response => {
-        if(response.ok){
-            response.text().then(data => processData(JSON.parse(data), _DAYTODAY));
-        }
-    })
-    .catch(err => {
-        console.error(err);
-    });
-}
-
-/*
-* Processes the data by either looping and generating a div or generating 1 div (for today)
-*/
-function processData(data, type){
-    console.log(data);
-
-    //post de city name inside the title
-    var city = type == _LIST6DAY ? data.city.name : data.name;
-
-    var i = 0;
-    if(type == _LIST6DAY){
-        data.list.forEach(element => {
-            console.log(element);
-            i += 1;
-            generateDayDiv(element, i, type);
-        });
-    }else if(type = _DAYTODAY){
-        generateDayDiv(element, null, type);
+  
+  }
+  
+  function failedToLoad(loading = ""){
+    var discriptionElement = document.querySelector('.today .discription');
+    var temperatureElement = document.querySelector('.today .temperature');
+    var iconElement = document.querySelector('.today .icon');
+    if(loading){
+      temperatureElement.innerHTML = `--°<span>C</span>`;
+      iconElement.innerHTML = `<img src='assets/photos/weather_icons_big/unknown.png' alt='Weather icon'>`;
+      discriptionElement.innerHTML = "Laden ...";
+  
+      var days = document.getElementsByClassName('day');
+      var date = new Date();
+      for(var i = 0; i < days.length; i++){
+        var dateElement = days[i].children[0];
+        var iconElement = days[i].children[1];
+        var tempElement = days[i].children[2];
+  
+        dateElement.innerHTML = days_lookup[new Date(date.getFullYear(), date.getMonth(), date.getDay() + i).getDay()];
+        iconElement.innerHTML = `<img src='assets/photos/weather_icons/unknown.png' alt='Weather icon'>`;
+        tempElement.innerHTML = `--°<span>C</span>`;
+      }
+    }else{
+      discriptionElement.innerHTML = "Kon de API niet bereiken";
     }
-}
-/*
-* Generates the div with all info
-*/
-function generateDayDiv(day, i, type){
-    var now = Date.now();
-    var date;
-    var maxTemp;
-    var minTemp;
-    var temp;
-    var humidity;
-    var pressure;
-    var feels_like;
-    var wind_speed;
-    var wind_deg;
-    var description;
-    var icon;
-    var id;
-    if(type == _DAYTODAY){
-        date = day.dt;
-        maxTemp = day.main.temp_max;
-        minTemp = day.main.temp_min;
-        temp = day.main.temp;
-        humidity = day.humidity;
-        pressure = day.pressure;
-        feels_like = day.feels_like.day;
-        wind_speed = day.speed;
-        wind_deg = day.deg;
-        description = day.weather[0].description;
-        icon = day.weather[0].icon;
-        id = day.weather[0].id;
-    }else if(type == _LIST6DAY){
-        date = day.dt;
-        maxTemp = day.temp.max;
-        minTemp = day.temp.min;
-        temp = day.temp.day;
-        humidity = day.main.humidity;
-        pressure = day.main.pressure;
-        feels_like = day.main.feels_like;
-        wind_speed = day.wind.speed;
-        wind_deg = day.wind.deg;
-        description = day.weather[0].description;
-        icon = day.weather[0].icon;
-        id = day.weather[0].id;
-    }
-
-    main_div = document.createElement('div');
-    main_div.classList.add(type == _LIST6DAY ? "weekDay " + i : "todayDay");
-    if(type == _DAYTODAY){
-        //add all needed elements
-    }else if(tpye == _LIST6DAY){
-        //add all needed elements for future week days
-    }
-}
-
-/*
-* if the window is loaded, do the api requests.
-* because this is assynchronous, we still need a default dataheader.
-*/
-window.addEventListener('load', (event) => {
-    getWeatherDataNow(35,139, "nl");
-    getWeatherDataFuture(35, 139, "nl");
-});
-    
+  
+  }

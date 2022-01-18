@@ -19,6 +19,29 @@
         gtag('config', 'G-VZ7L34E9JR');
     </script>
 
+    <!-- Get the geolocation: -->
+    <script>
+        var x ;
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        //standard Brussel
+        let lat = 50.850346;
+        let long = 4.351721;
+        function setPosition(position) {
+            long = position.coords.longitude;
+            lat = position.coords.latitude;
+        }
+    </script>
+    
+    <!-- bulk weather processing -->
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/weather.js"></script>
+
 </head>
 <body>
 
@@ -39,10 +62,61 @@
 
     <main>
         <section>
-            <div class="scene">
-                <div class="carousel"></div>
-                <button class="arrow previous-button"></button>
-                <button class="arrow next-button"></button>
+            <h2>Today</h2>
+            <div id="weather_today">
+                <div class="today">
+                    <div class="left">
+                        <p class="temperature"></p>
+                        <p class="date"></p>
+                        <p class="location"></p>
+                    </div>
+                    <div class="right">
+                        <div class="right_items">
+                            <div class="icon"></div>
+                            <p class="discription"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Next week</h2>
+            <div id="future_days">
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
+                <div class="day">
+                    <p class="date"></p>
+                    <div class="icon"></div>
+                    <p class="temperature"></p>
+                </div>
             </div>
         </section>
     </main>
