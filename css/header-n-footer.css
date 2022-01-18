@@ -1,0 +1,51 @@
+body {
+    margin: 0px;
+}
+
+header {
+    background-color: #0F0326;
+    color: white;
+    padding: 0px 20px;
+}
+
+header .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 5rem;
+}
+
+header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+header .logo {
+	font-size: 1.6rem;
+}
+
+header nav ul {
+	display: flex;
+	padding-left: 0;
+	list-style: none;
+	font-size: 1.2rem;
+	gap: 2rem;
+}
+
+header nav a:hover {
+	text-decoration: underline;
+}
+
+main {
+	min-height: calc(100vh - 5rem);
+}
+
+footer {
+	background-color: #0F0326;
+	color: white;
+	overflow: hidden;
+}
+
+footer p {
+	text-align: center;
+}
