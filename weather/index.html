@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/header-n-footer.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/weather.css">
@@ -18,29 +19,11 @@
 
         gtag('config', 'G-VZ7L34E9JR');
     </script>
-
-    <!-- Get the geolocation: -->
-    <script>
-        var x ;
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-        //standard Brussel
-        let lat = 50.850346;
-        let long = 4.351721;
-        function setPosition(position) {
-            long = position.coords.longitude;
-            lat = position.coords.latitude;
-        }
-    </script>
     
-    <!-- bulk weather processing -->
+    <!-- libs -->
     <script src="../scripts/jquery.js"></script>
-    <script src="../scripts/weather.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
 
 </head>
 <body>
@@ -61,64 +44,70 @@
 
 
     <main>
-        <section>
-            <h2>Today</h2>
-            <div id="weather_today">
-                <div class="today">
-                    <div class="left">
-                        <p class="temperature"></p>
-                        <p class="date"></p>
-                        <p class="location"></p>
-                    </div>
-                    <div class="right">
-                        <div class="right_items">
-                            <div class="icon"></div>
-                            <p class="discription"></p>
+        <div class="wrapper">
+            <div>
+                <input type="text" name="city" id="city_search"/>
+                <span>Zoek</span>
+            </div>
+            <section>
+                <div id="weather_today">
+                    <div class="today">
+                        <div class="left">
+                            <h2>Today</h2>
+                            <p class="temperature"></p>
+                            <p class="date">Now</p>
+                            <p class="location"></p>
+                        </div>
+                        <div class="right">
+                            <div class="right_items">
+                                <div class="icon"></div>
+                                <p class="discription"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section>
-            <h2>Next week</h2>
-            <div id="future_days">
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-                <div class="day">
-                    <p class="date"></p>
-                    <div class="icon"></div>
-                    <p class="temperature"></p>
-                </div>
-            </div>
-        </section>
+            </section>
+            <section>
+                <h2>Next week</h2>
+                <ul id="future_days">
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                    </li>
+                </ul>
+            </section>
+        </div>
     </main>
 
 
