@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/weather.css">
+    <title>Weather Data</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ7L34E9JR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VZ7L34E9JR');
+    </script>
+    
+    <!-- libs -->
+    <script src="../scripts/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="../scripts/hamburger.js"></script>
+
+</head>
+<body>
+
+
+    <header>
+        <nav>
+            <a class="logo" href="./"><strong>Weatherio</strong></a>
+            <a class="skip-nav" href="#main-content">Skip Navigation</a>
+            <button tabindex="0" onclick="toggleHamburger()" class="hamburger">
+                <span id="lineOne" class="line"></span>
+                <span id="lineTwo" class="line"></span>
+                <span id="lineThree" class="line"></span>
+            </button>
+            <ul class="nav-items">
+                <li><a href="../weather">Home</a></li>
+                <li id="nav-active"><a href="../today">Today</a></li>
+                <li><a href="../week">Next Week</a></li>
+                <li><a href="../about/">about</a></li>
+            </ul>
+        </nav>
+      </header>
+
+
+    <main id='main-content'>
+        <div class="wrapper weather-wrap">
+            <div class="search">
+                <input type="text" name="city" id="city_search"/>
+                <span><img src="../assets/photos/search-icon.svg" alt="Search"></span>
+            </div>
+            <section>
+                <div id="weather_today" class="detail">
+                    <div class="today">
+                        <div class="left">
+                            <h2>Today</h2>
+                            <p class="temperature"></p>
+                            <p class="date">Now</p>
+                            <p class="location"></p>
+                        </div>
+                        <div class="right">
+                            <div class="right_items">
+                                <div class="icon"></div>
+                                <p class="discription"></p>
+                                <div class="wind">
+                                    <div class="windicon"></div>
+                                    <p class="speed"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-today">
+                    <div class="sun">
+                        <p class="uvi"></p>
+                        <canvas id="sunpos"></canvas>
+                        <div class="suntime">
+                            <p class="dawn"></p>
+                            <p class="dusk"></p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <ul>
+                            <li>
+                                <img src="../assets/photos/pressure.svg" alt="pressure">
+                                <div class="data">
+                                    <p class="title">Pressure</p>
+                                    <p class="value pressure"></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="../assets/photos/humidity.svg" alt="humidity">
+                                <div class="data">
+                                    <p class="title">Humidity</p>
+                                    <p class="value humidity"></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="../assets/photos/visiblilty.svg" alt="visiblilty">
+                                <div class="data">
+                                    <p class="title">Visibility</p>
+                                    <p class="value visibility"></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="../assets/photos/dew.svg" alt="dew">
+                                <div class="data">
+                                    <p class="title">Dew point</p>
+                                    <p class="value dewpoint"></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hourly">
+                    <canvas id="hour_temp"></canvas>
+                </div>
+                <div class="alerts"></div>
+            </section>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>Copyright (c) - Groep 12 - Odisee 2021</p>
+    </footer>
+
+    <script src="../scripts/weather-api.js"></script>
+    <script src="../scripts/weather-today.js"></script>
+
+</body>
+</html>
