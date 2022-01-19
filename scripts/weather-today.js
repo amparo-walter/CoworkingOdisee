@@ -75,7 +75,40 @@ function processesData(data) {
         }
     }
     drawCanvasHourly(start_hour, temps, max_temp, min_temp);
-  
+    
+    //warning
+    var warningElement = document.querySelector('.alerts .warnings');
+    var inner;
+    if(data.alerts === undefined){
+        inner = `
+        <li>
+            <div class='warning'>
+                <p class='event'>No warnings to report</p>
+            </di>
+        </li>
+        `
+        warningElement.innerHTML = inner;
+    }
+    else{
+
+        data.alerts.forEach(alert => {
+            console.log(alert);
+            var start_date = new Date(alert.start*1000);
+            var start = start_date.getDate() + '/' + (start_date.getMonth() + 1) + '/' + start_date.getFullYear();
+            var end_date = new Date(alert.end*1000);
+            var end = end_date.getDate() +'/' + (end_date.getMonth() + 1) + '/' + end_date.getFullYear();
+            
+            inner = `
+            <li>
+                <div class='warning'>
+                    <p class='event'>${alert.event} (${start} -- ${end})</p>
+                    <p class='disc'>${alert.description}</p>
+                </di>
+            </li>
+            `
+            warningElement.innerHTML += inner;
+        });
+    }
   }
   
   function failedToLoad(loading = ""){
@@ -95,8 +128,8 @@ function processesData(data) {
   function drawCanvasHourly(start_h, temps, t_max, t_min){
       var canvas = document.querySelector('#hour_temp');
       var ctx = canvas.getContext('2d');
-      var w = 900;
-      var h = 160;
+      var w = 1200;
+      var h = 213;
       canvas.width = w;
       canvas.height = h;
     
@@ -107,7 +140,7 @@ function processesData(data) {
 
       ctx.beginPath();
       ctx.lineWidth = 3;
-      ctx.font = "16px Fjalla One";
+      ctx.font = "20px Fjalla One";
       ctx.strokeStyle = "#ffffff";
       ctx.fillStyle = "#ffffff";
       for(var i = 0; i < 24; i++){

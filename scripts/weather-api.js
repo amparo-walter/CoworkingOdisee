@@ -71,7 +71,6 @@ $('#city_search').autocomplete({
     .then(response => response.json())
     .then(data => {
       var results = data.results;
-      console.log(results);
       var suggest = [];
       results.forEach(result => {
         var value = formatLocation(result);

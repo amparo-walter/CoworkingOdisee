@@ -49,43 +49,41 @@
 
 
     <main id='main-content'>
-        <div class="wrapper weather-wrap">
+        <div class="wrapper week">
             <div class="search">
                 <input type="text" name="city" id="city_search"/>
                 <span><img src="../assets/photos/search-icon.svg" alt="Search"></span>
             </div>
-            <section>
-                <div id="weather_today">
-                    <div class="today">
-                        <div class="left">
-                            <h2>Today</h2>
-                            <p class="temperature"></p>
-                            <p class="date">Now</p>
-                            <p class="location"></p>
+            <section class="detail-week">
+                <h2>Next week</h2>
+                <div class='location'></div>
+                <ul id="future_days" class="detail">
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                        <div class="wind">
+                            <div class="windicon"></div>
+                            <p class="speed"></p>
                         </div>
-                        <div class="right">
-                            <div class="right_items">
-                                <div class="icon"></div>
-                                <p class="discription"></p>
-                                <div class="wind">
-                                    <div class="windicon"></div>
-                                    <p class="speed"></p>
-                                </div>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                <p class="value pressure"></p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h2>Next week</h2>
-                <ul id="future_days">
-                    <li class="day">
-                        <p class="date"></p>
-                        <div class="icon"></div>
-                        <p class="temperature"></p>
-                        <div class="wind">
-                            <div class="windicon"></div>
-                            <p class="speed"></p>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                <p class="value dewpoint"></p>
+                            </div>
                         </div>
                     </li>
                     <li class="day">
@@ -96,14 +94,24 @@
                             <div class="windicon"></div>
                             <p class="speed"></p>
                         </div>
-                    </li>
-                    <li class="day">
-                        <p class="date"></p>
-                        <div class="icon"></div>
-                        <p class="temperature"></p>
-                        <div class="wind">
-                            <div class="windicon"></div>
-                            <p class="speed"></p>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                <p class="value pressure"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                <p class="value dewpoint"></p>
+                            </div>
                         </div>
                     </li>
                     <li class="day">
@@ -114,14 +122,26 @@
                             <div class="windicon"></div>
                             <p class="speed"></p>
                         </div>
-                    </li>
-                    <li class="day">
-                        <p class="date"></p>
-                        <div class="icon"></div>
-                        <p class="temperature"></p>
-                        <div class="wind">
-                            <div class="windicon"></div>
-                            <p class="speed"></p>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                
+                                <p class="value pressure"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                
+                                <p class="value dewpoint"></p>
+                            </div>
                         </div>
                     </li>
                     <li class="day">
@@ -132,6 +152,27 @@
                             <div class="windicon"></div>
                             <p class="speed"></p>
                         </div>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                
+                                <p class="value pressure"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                
+                                <p class="value dewpoint"></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="day">
                         <p class="date"></p>
@@ -140,6 +181,87 @@
                         <div class="wind">
                             <div class="windicon"></div>
                             <p class="speed"></p>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                
+                                <p class="value pressure"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                
+                                <p class="value dewpoint"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                        <div class="wind">
+                            <div class="windicon"></div>
+                            <p class="speed"></p>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                
+                                <p class="value pressure"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                
+                                <p class="value dewpoint"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="day">
+                        <p class="date"></p>
+                        <div class="icon"></div>
+                        <p class="temperature"></p>
+                        <div class="wind">
+                            <div class="windicon"></div>
+                            <p class="speed"></p>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/pressure.svg" alt="pressure">
+                            <div>
+                                
+                                <p class="value pressure"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/humidity.svg" alt="humidity">
+                            <div>
+                                
+                                <p class="value humidity"></p>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <img src="../assets/photos/dew.svg" alt="dew point">
+                            <div>
+                                
+                                <p class="value dewpoint"></p>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -153,7 +275,7 @@
     </footer>
 
     <script src="../scripts/weather-api.js"></script>
-    <script src="../scripts/weather_overview.js"></script>
+    <script src="../scripts/weather-week.js"></script>
 
 </body>
 </html>
