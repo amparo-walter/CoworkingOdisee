@@ -30,8 +30,7 @@
       src: url('../assets/fonts/EuphoriaScript-Regular.ttf');
   }
   
-  *{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
-  }
+:root{
+    --clr-accent1: red;
+    --clr-accent2: blue;
+}
