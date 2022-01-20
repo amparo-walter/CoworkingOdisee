@@ -1,13 +1,13 @@
 
 
-#contact {
+main #contact {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.contact-box {
+main .contact-box {
   width: 90%;
   max-width: 65em;
   margin: 80px 50px;
@@ -15,13 +15,13 @@
   flex-wrap: wrap;
 }
 
-.contact-links, .contact-form-wrapper {
+main .contact-links, main .contact-form-wrapper {
   width: 50%;
   padding: 8% 5% 10% 5%;
 }
 
 
-.contact-links {
+main .contact-links {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,27 +43,44 @@
   border-radius: 10px 0 0 10px;
 }
 
-.contact-form-wrapper {
+body.darkmode main .contact-links {
+  background:
+    radial-gradient(
+      circle at 55% 92%, var(--clr-accent1) 0 12%, transparent 12.2%
+    ), 
+    radial-gradient(
+      circle at 94% 72%, var(--clr-accent1) 0 10%, transparent 10.2%
+    ), 
+    radial-gradient(
+      circle at 20% max(78%, 350px), var(--clr-accent1) 0 7%, transparent 7.2%
+    ), 
+    radial-gradient(
+      circle at 0% 0%, var(--clr-accent1) 0 40%, transparent 40.2%
+    ), 
+    var(--clr-darkmode);
+}
+
+main .contact-form-wrapper {
   background-color: #666;
   border-radius: 0 10px 10px 0;
 }
 
 @media only screen and (max-width: 800px) {
-  .contact-links, .contact-form-wrapper {
+  main .contact-links, main .contact-form-wrapper {
     width: 100%;
   }
   
-  .contact-links {
+  main .contact-links {
     border-radius: 10px 10px 0 0;
   }
   
-  .contact-form-wrapper {
+  main .contact-form-wrapper {
     border-radius: 0 0 10px 10px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .contact-box {
+  main .contact-box {
     width: 95%;
     margin-left: 5%;
     margin-right: 5%;
@@ -71,19 +88,19 @@
 }
 
 
-.links {
+main .links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.link {
+main .link {
   margin: 10px;
   cursor: pointer;
     padding: 0.5em;
 }
 
-img {
+main img {
   width: 45px;
   height: 45px;
   filter: invert(100);
@@ -92,12 +109,12 @@ img {
   object-position: center;
 }
 
-img:hover {
+main img:hover {
   transform: scale(1.1, 1.1);
   filter: invert(80%);
 }
 
-img:active {
+main img:active {
   transform: scale(1.1, 1.1);
   filter: 
     hue-rotate(220deg)
@@ -105,13 +122,13 @@ img:active {
     sepia(0.3);
 }
 
-.form-item {
+main .form-item {
   position: relative;
   margin-bottom: 20px;
 }
 
 
-label:not(fieldset label) {
+main label:not(fieldset label) {
   position: relative;
   color: #fff;
   font-weight: bold;
@@ -122,7 +139,7 @@ label:not(fieldset label) {
   font-family: 'Fjalla One';
 }
 
-input, textarea {
+main input, textarea {
   width: 100%;
   outline: 0;
   border: 1px solid #ccc;
@@ -131,7 +148,7 @@ input, textarea {
   font-size: 1em;
 }
 
-.btn-1{
+main .btn-1{
   width: 10em;
   height: 2em;
   border-radius: 5em;
@@ -146,13 +163,13 @@ input, textarea {
   border: none;
   color: white;
 }
-.btn-1:hover,
-.btn-1:focus{
+main .btn-1:hover,
+main .btn-1:focus{
   cursor: pointer;
   opacity: 0.6;
 }
 
-h1 {
+main h1 {
     font-family: 'Arimo', sans-serif;
     color: #999;
     font-size: 3.5em;
@@ -161,60 +178,73 @@ h1 {
     transform: scale(.95, 1);
 }
 
-.msg-sent{
+main .msg-sent{
   color: var(--clr-accent1);
   margin-top: 2em;
   text-align: center;
   font-weight: bold;
   font-size: 2em;
   font-family: 'Fjalla One', sans-serif;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+main #formControl {
+  overflow: hidden;
+}
+
+body.darkmode main input, body.darkmode main textarea {
+  background: var(--clr-darkmode);
+  color: white;
 }
 
 
 @media only screen and (max-width: 800px) {
-  h1 {
+  main h1 {
     font-size: 3.5em;
   }
 }
 @media screen and (max-width: 500px){
-    h1{
+  main h1{
         font-size: 2.5em;
     }
 }
 @media only screen and (max-width: 400px) {
-  h1 {
+  main h1 {
     font-size: 2em;
   }
-  img {
+  main img {
     width: 38px;
     height: 38px;
   }
 }
-fieldset{
+main fieldset{
     border: none;
 }
-legend{
+main legend{
     color: #555;
   font-weight: bold;
   letter-spacing: 1px;
   font-size: 1em;
   margin-left: -10px;
 }
-fieldset input{
+main fieldset input{
     width: auto;
     margin: 0.5em 1em;
 }
-.radio-select{
+main .radio-select{
     display: flex;
     justify-content: left;
     align-items: center;
 }
-.btn-1{
+main .btn-1{
     width: 100%;
     margin-top: 2em;
     padding: 0;
 }
 
-.error{
+main .error{
   color: red;
 }

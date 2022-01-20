@@ -10,7 +10,9 @@ document.querySelector('form').addEventListener('submit', (event) => {
     request.setRequestHeader('Content-type', 'application/json');
     const params = {content: "Bericht van `"+name+"` `("+email+")`: ```"+message+"```"}
     request.send(JSON.stringify(params));
-
-    event.target.innerHTML += '<p class="msg-sent">Bericht verzonden</p>';
+     
+    document.querySelector('#formControl').style.opacity = '0'
+    document.querySelector('#formControl').style.width = '0px';
+    document.querySelector('.msg-sent').style.opacity = '1'
 
 })

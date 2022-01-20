@@ -8,6 +8,35 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/about.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ7L34E9JR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VZ7L34E9JR');
+    </script>
+    
+    <!-- Hotjar Tracking Code for https://weatherio.amparowalter.ikdoeict.be -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2791564,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- libs -->
+    <script src="../scripts/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="../scripts/hamburger.js"></script>
+
 </head>
 <body>
   <header>
@@ -20,10 +49,12 @@
           <span id="lineThree" class="line"></span>
       </button>
       <ul class="nav-items">
-          <li id="nav-active"><a href="../weather">Home</a></li>
+          <li><a href="../weather">Home</a></li>
           <li><a href="../today">Today</a></li>
           <li><a href="../week">Next Week</a></li>
-          <li><a href="../about/">about</a></li>
+          <li id="nav-active"><a href="../about/">about</a></li>
+          <li><a href="../contact">Contact</a></li>
+
       </ul>
       <label id="darkmode-switch">
           <input type="checkbox">
@@ -32,21 +63,21 @@
   </nav>
   </header>
   <main>
-    <div class="about-section">
-        <h1>About Us Page</h1>
-        <p>Who we are and what we do.</p>
-      </div>
       
-      <h2 style="text-align:center">Ons Team</h2>
+      <h2 class="pageTitle">Our team</h2>
       <div class="row">
         <div class="column">
           <div class="card">
             <div class="container">
-              <h2></h2>
-              <p class="title"></p>
-              <p>S</p>
-              <p></p>
-              <p><button class="button">Contact</button></p>
+              <div class="name">
+                <h2>Brian Verspeelt</h2>
+                <p class="title">co-owner</p>
+              </div>
+              <ul>
+                <li>18 Year old student</li>
+                <li>Studying Electronics/ICT at Odisee Ghent</li>
+              </ul>
+              <p class="email"><a href="mailto:brian.verspeelt@student.odisee.be">brian.verspeelt@student.odisee.be</a></p>
             </div>
           </div> 
         </div>
@@ -54,11 +85,15 @@
         <div class="column">
           <div class="card">
             <div class="container">
-              <h2>Nick Salenbien</h2>
-              <p class="title">co-owner</p>
-              <p>19-year old student, studying Electronics/ICT at Odisee Ghent.</p>
-              <p>nick.salenbien@telenet.be</p>
-              <p><button class="button">Contact</button></p>
+              <div>
+                <h2>Nick Salenbien</h2>
+                <p class="title">co-owner</p>
+              </div>
+              <ul>
+                <li>19 Year old student</li>
+                <li>Studying Electronics/ICT at Odisee Ghent</li>
+              </ul>
+              <p class="email"><a href="mailto:nick.salenbien@student.odisee.be">nick.salenbien@student.odisee.be</a></p>
             </div>
           </div>
         </div>
@@ -66,15 +101,25 @@
         <div class="column">
           <div class="card">
             <div class="container">
-              <h2>Amparo Walter</h2>
-              <p class="title"></p>
-              <p>19-year old student, studying Electronics/ICT at Odisee Ghent.</p>
-              <p></p>
-              <p><button class="button">Contact</button></p>
+              <div>
+                <h2>Amparo Walter</h2>
+                <p class="title">co-owner</p>
+              </div>
+              <ul>
+                <li>19 Year old student</li>
+                <li>Studying Electronics/ICT at Odisee Ghent</li>
+              </ul>
+              <p class="email"><a href="mailto:amparo.walter@student.odisee.be">amparo.walter@student.odisee.be</a></p>
             </div>
           </div>
         </div>
       </div>
   </main>
+
+  <footer>
+    <p>Copyright (c) - Groep 12 - Odisee 2021</p>
+  </footer>
+
+  <script src="../scripts/darkmode.js"></script>
 </body>
 </html>

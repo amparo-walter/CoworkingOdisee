@@ -72,19 +72,21 @@
             </div>
             <div class="contact-form-wrapper">
                 <form style="margin:5rem">
-                    <div class="form-item">
-                        <label for="name">Name</label><br>
-                        <input type="text" id="name" name="fname"><br>
+                    <div id="formControl">
+                        <div class="form-item">
+                            <label for="name">Name</label><br>
+                            <input type="text" id="name" name="fname"><br>
+                        </div>
+                        <div class="form-item">
+                            <label for="email">Email</label><br>
+                            <input type="email" id="email" name="lname"><br>
+                        </div>
+                        <div class="form-item">
+                            <label for="message">Message</label><br>
+                            <textarea name="message" id="message" rows="5" cols="40"></textarea><br>
+                        </div>
+                        <input class="btn-1" type="submit" value="Send">
                     </div>
-                    <div class="form-item">
-                        <label for="email">Email</label><br>
-                        <input type="email" id="email" name="lname"><br>
-                    </div>
-                    <div class="form-item">
-                        <label for="message">Message</label><br>
-                        <textarea name="message" id="message" rows="5" cols="40"></textarea><br>
-                    </div>
-                    <input class="btn-1" type="submit" value="Send">
                     <p class="msg-sent">Bericht verzonden</p>
                 </form>
             </div>
@@ -97,8 +99,6 @@
         <p>Copyright (c) - Groep 12 - Odisee 2021</p>
     </footer>
 
-    <script src="../scripts/weather-api.js"></script>
-    <script src="../scripts/weather-week.js"></script>
     <script src="../scripts/darkmode.js"></script>
     <script src="../scripts/contact.js"></script>
 
