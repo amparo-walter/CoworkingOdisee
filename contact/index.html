@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/weather.css">
+    <link rel="stylesheet" href="../css/contact.css">
     <title>Weather Data</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -62,20 +62,35 @@
                 <span class="slider"></span>
             </label>
         </nav>
-      </header>
+    </header>
 
-
-    <main id='main-content'>
-        <form style="margin:5rem">
-            <label for="name">Name</label><br>
-            <input type="text" id="name" name="fname"><br>
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="lname"><br>
-            <label for="message">Message</label><br>
-            <textarea name="message" id="message" rows="5" cols="40"></textarea><br>
-            <input type="submit" value="Send">
-        </form>
-    </main>
+      <main id="main-content">
+        <section id="contact">
+          <div class="contact-box">
+            <div class="contact-links">
+              <h1>CONTACT</h1>
+            </div>
+            <div class="contact-form-wrapper">
+                <form style="margin:5rem">
+                    <div class="form-item">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="fname"><br>
+                    </div>
+                    <div class="form-item">
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="lname"><br>
+                    </div>
+                    <div class="form-item">
+                        <label for="message">Message</label><br>
+                        <textarea name="message" id="message" rows="5" cols="40"></textarea><br>
+                    </div>
+                    <input class="btn-1" type="submit" value="Send">
+                    <p class="msg-sent">Bericht verzonden</p>
+                </form>
+            </div>
+          </div>
+        </section>
+      </main>
 
 
     <footer>

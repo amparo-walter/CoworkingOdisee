@@ -11,6 +11,6 @@ document.querySelector('form').addEventListener('submit', (event) => {
     const params = {content: "Bericht van `"+name+"` `("+email+")`: ```"+message+"```"}
     request.send(JSON.stringify(params));
 
-    event.target.outerHTML = '<p>Bericht verzonden</p>' 
+    event.target.innerHTML += '<p class="msg-sent">Bericht verzonden</p>';
 
 })
