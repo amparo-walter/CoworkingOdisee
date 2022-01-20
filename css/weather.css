@@ -29,6 +29,9 @@
   margin: 0 auto;
   box-shadow: 0 0 15px 1px #555555;
 }
+body.darkmode #weather_today{
+  box-shadow: 0 0 15px 1px black;
+}
 #weather_today.detail .today{
   border-radius: 30px 30px 0 0;
 }
@@ -205,6 +208,9 @@ section h2:not(.alerts h2){
   position: relative;
   font-family: 'Fjalla One';
   color: white;
+}
+body.darkmode .detail-today{
+  background: linear-gradient(45deg, rgb(26, 26, 26) 0%, rgb(66, 66, 66) 100%);
 }
 .detail-today .sun{
   width: 60%;

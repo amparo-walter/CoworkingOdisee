@@ -15,6 +15,10 @@ body {
     background-size: cover;
     overflow-x: hidden;
 }
+body.darkmode{
+  background-color: #111;
+  background-image: none;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -111,6 +115,7 @@ nav{
 body.darkmode nav {
     background-color: var(--clr-darkmode);
     color: white;
+    box-shadow: 0 -2px 12px -3px black;
 }
 
 nav .logo{
