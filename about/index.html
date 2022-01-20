@@ -5,8 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
+  <header>
+    <nav>
+      <a class="logo" href="./"><strong>Weatherio</strong></a>
+      <a class="skip-nav" href="#main-content">Skip Navigation</a>
+      <button tabindex="0" onclick="toggleHamburger()" class="hamburger">
+          <span id="lineOne" class="line"></span>
+          <span id="lineTwo" class="line"></span>
+          <span id="lineThree" class="line"></span>
+      </button>
+      <ul class="nav-items">
+          <li id="nav-active"><a href="../weather">Home</a></li>
+          <li><a href="../today">Today</a></li>
+          <li><a href="../week">Next Week</a></li>
+          <li><a href="../about/">about</a></li>
+      </ul>
+      <label id="darkmode-switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+      </label>
+  </nav>
+  </header>
   <main>
     <div class="about-section">
         <h1>About Us Page</h1>
@@ -24,7 +48,7 @@
               <p></p>
               <p><button class="button">Contact</button></p>
             </div>
-          </div>
+          </div> 
         </div>
       
         <div class="column">
