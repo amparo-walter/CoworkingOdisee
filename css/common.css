@@ -80,6 +80,9 @@ body {
     transition: 0.5s;
     transform-origin: center;
 }
+body.darkmode .hamburger span.line {
+    background-color: white;
+}
 .hamburger:hover span.line, 
 .hamburger:focus span.line{
     background-color: var(--clr-accent1);
@@ -105,6 +108,11 @@ nav{
     box-shadow: 0 -2px 12px -3px lightgrey;
 }
 
+body.darkmode nav {
+    background-color: var(--clr-darkmode);
+    color: white;
+}
+
 nav .logo{
     margin-left: 1em;
     font-family: 'Fjalla One';
@@ -115,6 +123,7 @@ nav ul{
     position: relative;
     text-align: center;
     justify-content: center;
+    margin-right: 5rem;
 }
 nav ul li{
     float: left;
@@ -164,6 +173,54 @@ nav a.logo{
     font-size: 2em;
 }
 
+nav #darkmode-switch {
+    position: absolute;
+    top: 20px;
+    right: 1rem;
+
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+nav #darkmode-switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+nav #darkmode-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+}
+
+nav #darkmode-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+nav #darkmode-switch input:checked + .slider {
+    background-color: black;
+}
+  
+nav #darkmode-switch input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
 footer{
   background-color: white;
   color: #ff8345;
@@ -173,6 +230,9 @@ footer{
   font-family: sans-serif;
   font-size: 1.2em;
   letter-spacing: 1px;
+}
+body.darkmode footer {
+    background-color: var(--clr-darkmode);
 }
 
 @media screen and (max-width: 1200px){
@@ -184,6 +244,9 @@ footer{
   .hamburger{
       display: block;
       z-index: 99999;
+  }
+  nav #darkmode-switch {
+      right: 5rem;
   }
   nav{
       background-color: white;
@@ -206,6 +269,10 @@ footer{
       left: 100%;
       visibility: hidden;
       transition: 0.5s ease;
+  }
+  body.darkmode .nav-items {
+      background-color: var(--clr-darkmode);
+      opacity: 0.95;
   }
   .nav-items.showHamburgerMenu{
       visibility: visible;
