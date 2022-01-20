@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/weather.css">
+    <title>Weather Data</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ7L34E9JR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VZ7L34E9JR');
+    </script>
+    
+    <!-- Hotjar Tracking Code for https://weatherio.amparowalter.ikdoeict.be -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2791564,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- libs -->
+    <script src="../scripts/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="../scripts/hamburger.js"></script>
+
+</head>
+<body>
+
+
+    <header>
+        <nav>
+            <a class="logo" href="./"><strong>Weatherio</strong></a>
+            <a class="skip-nav" href="#main-content">Skip Navigation</a>
+            <button tabindex="0" onclick="toggleHamburger()" class="hamburger">
+                <span id="lineOne" class="line"></span>
+                <span id="lineTwo" class="line"></span>
+                <span id="lineThree" class="line"></span>
+            </button>
+            <ul class="nav-items">
+                <li><a href="../weather">Home</a></li>
+                <li><a href="../today">Today</a></li>
+                <li><a href="../week">Next Week</a></li>
+                <li><a href="../about/">about</a></li>
+                <li id="nav-active"><a href="../contact/">Contact</a></li>
+            </ul>
+            <label id="darkmode-switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </nav>
+      </header>
+
+
+    <main id='main-content'>
+        <form style="margin:5rem">
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="fname"><br>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="lname"><br>
+            <label for="message">Message</label><br>
+            <textarea name="message" id="message" rows="5" cols="40"></textarea><br>
+            <input type="submit" value="Send">
+        </form>
+    </main>
+
+
+    <footer>
+        <p>Copyright (c) - Groep 12 - Odisee 2021</p>
+    </footer>
+
+    <script src="../scripts/weather-api.js"></script>
+    <script src="../scripts/weather-week.js"></script>
+    <script src="../scripts/darkmode.js"></script>
+    <script src="../scripts/contact.js"></script>
+
+</body>
+</html>
